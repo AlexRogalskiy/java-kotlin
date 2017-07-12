@@ -1,7 +1,7 @@
 package com.github.pozo.kotlin.collections.map
 
 fun main(args: Array<String>) {
-    mapOf_withDefault_getOrElse()
+    lazyMap()
 }
 
 fun mapOf_withDefault_getOrElse() {
@@ -62,10 +62,10 @@ fun mutableMapOf() {
     println(value)
 }
 
-fun mutableMapOf_getOrPut() {
-    val map = mutableMapOf("aaa" to 32)
+fun lazyMap() {
+    val map = mutableMapOf("aaa" to mutableListOf(32))
 
-    val key = map.getOrPut("aaa", { 23 })
+    map.putIfAbsent("aaa", mutableListOf(2))?.add(2)
 
-    println(key)
+    println(map)
 }
